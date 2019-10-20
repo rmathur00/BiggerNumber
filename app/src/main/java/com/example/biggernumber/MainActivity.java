@@ -12,8 +12,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     Button b1,b2;
-    TextView msg;
-    int number1, number2;
+    TextView msg, score;
+    int number1, number2, count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         b1 = findViewById(R.id.Button1);
         b2 = findViewById(R.id.Button2);
         msg = findViewById(R.id.message);
+        score = findViewById(R.id.Score);
 
         randonNumberGenerator();
 
@@ -47,16 +48,25 @@ public class MainActivity extends AppCompatActivity {
     public void leftButton(View view){
         if(number1>number2){
             msg.setText("CONGRATULATIONS ^_^");
+            count++;
+            score.setText("Score: " + count);
         }else{
             msg.setText("Wrong: "+ number2 + ">" + number1 );
+            count--;
+            score.setText("Score: " + count);
         }
         randonNumberGenerator();
     }
+
     public void rightButton(View view){
         if(number2>number1){
             msg.setText("CONGRATULATIONS ^_^");
+            count++;
+            score.setText("Score: " + count);
         }else{
             msg.setText("Wrong: "+ number1 + ">" + number2 );
+            count--;
+            score.setText("Score: " + count);
         }
         randonNumberGenerator();
     }

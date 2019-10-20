@@ -59,5 +59,19 @@
         android:layout_marginRight="69dp"
         android:onClick="rightButton"/>
 
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/Button2"
+        android:layout_alignLeft="@+id/Button2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-19dp"
+        android:layout_marginLeft="-19dp"
+        android:layout_marginBottom="182dp"
+        android:id="@+id/Score"
+        android:text="Score: 0"
+        android:textAlignment="center"
+        android:textSize="25dp"/>
+
 
 </RelativeLayout>
