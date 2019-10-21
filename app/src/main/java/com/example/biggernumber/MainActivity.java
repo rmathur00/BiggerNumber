@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     Button b1,b2;
-    TextView msg, score;
-    int number1, number2, count = 0;
+    TextView msg, score, chances;
+    int number1, number2, count = 0, chance_counter = 5 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         b2 = findViewById(R.id.Button2);
         msg = findViewById(R.id.message);
         score = findViewById(R.id.Score);
+        chances = findViewById(R.id.Life);
 
         randonNumberGenerator();
 
@@ -53,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
         }else{
             msg.setText("Wrong: "+ number2 + ">" + number1 );
             count--;
+            chance_counter--;
+            chances.setText("Chances: " + chance_counter);
             score.setText("Score: " + count);
         }
+        gameover();
         randonNumberGenerator();
     }
 
@@ -66,8 +71,20 @@ public class MainActivity extends AppCompatActivity {
         }else{
             msg.setText("Wrong: "+ number1 + ">" + number2 );
             count--;
+            chance_counter--;
+            chances.setText("Chances: " + chance_counter);
             score.setText("Score: " + count);
         }
+        gameover();
         randonNumberGenerator();
+    }
+
+    public  void gameover(){
+        if(chance_counter == 0){
+            Toast.makeText(MainActivity.this,"You are dead, GAME OVER!", Toast.LENGTH_SHORT).show();
+            // Disable buttons
+            b1.setClickable(false);
+            b2.setClickable(false);
+        }
     }
 }
